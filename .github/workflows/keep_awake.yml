@@ -2,9 +2,7 @@ name: Keep Streamlit App Awake
 
 on:
   schedule:
-    # 매일 UTC 기준 자정(한국 시간 오전 9시)에 자동 실행
-    - cron: "0 0 * * *"
-  # 원할 때 수동으로도 실행할 수 있게 버튼 활성화
+    - cron: "0 */8 * * *"
   workflow_dispatch:
 
 jobs:
@@ -12,5 +10,4 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Ping Streamlit App
-        # 내 계산기 주소로 몰래 접속해서 깨우는 명령어
         run: curl -s "https://esembatterydesign.streamlit.app" > /dev/null
